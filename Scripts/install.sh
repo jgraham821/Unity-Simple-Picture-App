@@ -10,12 +10,5 @@ curl -o Unity.pkg http://download.unity3d.com/download_unity/44735ea161b3/MacEdi
 echo 'Validating download'
 ls -alt
 
-echo 'Monting and Installing Unity.pkg'
-MOUNTDIR=$(echo `hdiutil mount Unity.pkg | tail -1 \
-| awk '{$1=$2=""; print $0}'` | xargs -0 echo) \
-&& sudo installer -pkg "${MOUNTDIR}/"Unity.pkg -target / 
-
-
-MOUNTDIR=$(echo `hdiutil mount Unity.pkg | tail -1 \
-| awk '{$1=$2=""; print $0}'` | xargs -0 echo) \
-&& echo ${MOUNTDIR}
+echo 'Installing Unity.pkg'
+sudo installer -pkg Unity.pkg -target / 
